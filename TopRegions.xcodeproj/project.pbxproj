@@ -24,6 +24,12 @@
 		7D78638719880C65001021CB /* TopRegionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78638619880C65001021CB /* TopRegionsTests.m */; };
 		7D78639419880E8E001021CB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78639319880E8E001021CB /* FlickrFetcher.m */; };
 		7D78639819880E97001021CB /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78639719880E97001021CB /* CoreDataTableViewController.m */; };
+		7D78639B19880F58001021CB /* TopRegions.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7D78639919880F58001021CB /* TopRegions.xcdatamodeld */; };
+		7D7863A719881BD2001021CB /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863A619881BD2001021CB /* Photographer.m */; };
+		7D7863AA19881BD2001021CB /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863A919881BD2001021CB /* Photo.m */; };
+		7D7863AD19881BD2001021CB /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863AC19881BD2001021CB /* Region.m */; };
+		7D7863B019881C99001021CB /* Photo+Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863AF19881C99001021CB /* Photo+Flickr.m */; };
+		7D7863B319882907001021CB /* Region+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863B219882907001021CB /* Region+Create.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,17 @@
 		7D78639319880E8E001021CB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		7D78639619880E97001021CB /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		7D78639719880E97001021CB /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		7D78639A19880F58001021CB /* TopRegions.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TopRegions.xcdatamodel; sourceTree = "<group>"; };
+		7D7863A519881BD2001021CB /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
+		7D7863A619881BD2001021CB /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
+		7D7863A819881BD2001021CB /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		7D7863A919881BD2001021CB /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		7D7863AB19881BD2001021CB /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
+		7D7863AC19881BD2001021CB /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
+		7D7863AE19881C99001021CB /* Photo+Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+Flickr.h"; sourceTree = "<group>"; };
+		7D7863AF19881C99001021CB /* Photo+Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Flickr.m"; sourceTree = "<group>"; };
+		7D7863B119882907001021CB /* Region+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Region+Create.h"; sourceTree = "<group>"; };
+		7D7863B219882907001021CB /* Region+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Region+Create.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +138,17 @@
 		7D78635E19880C65001021CB /* TopRegions */ = {
 			isa = PBXGroup;
 			children = (
+				7D78639919880F58001021CB /* TopRegions.xcdatamodeld */,
+				7D7863AE19881C99001021CB /* Photo+Flickr.h */,
+				7D7863AF19881C99001021CB /* Photo+Flickr.m */,
+				7D7863B119882907001021CB /* Region+Create.h */,
+				7D7863B219882907001021CB /* Region+Create.m */,
+				7D7863AB19881BD2001021CB /* Region.h */,
+				7D7863AC19881BD2001021CB /* Region.m */,
+				7D7863A819881BD2001021CB /* Photo.h */,
+				7D7863A919881BD2001021CB /* Photo.m */,
+				7D7863A519881BD2001021CB /* Photographer.h */,
+				7D7863A619881BD2001021CB /* Photographer.m */,
 				7D78636A19880C65001021CB /* Main_iPhone.storyboard */,
 				7D78636D19880C65001021CB /* Main_iPad.storyboard */,
 				7D78636719880C65001021CB /* AppDelegate.h */,
@@ -284,8 +312,14 @@
 				7D78637219880C65001021CB /* ViewController.m in Sources */,
 				7D78636919880C65001021CB /* AppDelegate.m in Sources */,
 				7D78639419880E8E001021CB /* FlickrFetcher.m in Sources */,
+				7D7863B019881C99001021CB /* Photo+Flickr.m in Sources */,
+				7D7863AA19881BD2001021CB /* Photo.m in Sources */,
+				7D7863A719881BD2001021CB /* Photographer.m in Sources */,
 				7D78636519880C65001021CB /* main.m in Sources */,
+				7D7863AD19881BD2001021CB /* Region.m in Sources */,
 				7D78639819880E97001021CB /* CoreDataTableViewController.m in Sources */,
+				7D7863B319882907001021CB /* Region+Create.m in Sources */,
+				7D78639B19880F58001021CB /* TopRegions.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +544,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7D78639919880F58001021CB /* TopRegions.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7D78639A19880F58001021CB /* TopRegions.xcdatamodel */,
+			);
+			currentVersion = 7D78639A19880F58001021CB /* TopRegions.xcdatamodel */;
+			path = TopRegions.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7D78634D19880C65001021CB /* Project object */;
 }
