@@ -22,6 +22,8 @@
 		7D78637D19880C65001021CB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D78635C19880C65001021CB /* UIKit.framework */; };
 		7D78638519880C65001021CB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D78638319880C65001021CB /* InfoPlist.strings */; };
 		7D78638719880C65001021CB /* TopRegionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78638619880C65001021CB /* TopRegionsTests.m */; };
+		7D78639419880E8E001021CB /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78639319880E8E001021CB /* FlickrFetcher.m */; };
+		7D78639819880E97001021CB /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D78639719880E97001021CB /* CoreDataTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,11 @@
 		7D78638219880C65001021CB /* TopRegionsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TopRegionsTests-Info.plist"; sourceTree = "<group>"; };
 		7D78638419880C65001021CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7D78638619880C65001021CB /* TopRegionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopRegionsTests.m; sourceTree = "<group>"; };
+		7D78639119880E8E001021CB /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		7D78639219880E8E001021CB /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		7D78639319880E8E001021CB /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		7D78639619880E97001021CB /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		7D78639719880E97001021CB /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +121,15 @@
 		7D78635E19880C65001021CB /* TopRegions */ = {
 			isa = PBXGroup;
 			children = (
-				7D78636719880C65001021CB /* AppDelegate.h */,
-				7D78636819880C65001021CB /* AppDelegate.m */,
 				7D78636A19880C65001021CB /* Main_iPhone.storyboard */,
 				7D78636D19880C65001021CB /* Main_iPad.storyboard */,
+				7D78636719880C65001021CB /* AppDelegate.h */,
+				7D78636819880C65001021CB /* AppDelegate.m */,
 				7D78637019880C65001021CB /* ViewController.h */,
 				7D78637119880C65001021CB /* ViewController.m */,
 				7D78637319880C65001021CB /* Images.xcassets */,
+				7D78639519880E97001021CB /* CoreDataTableViewController */,
+				7D78639019880E8E001021CB /* Flickr Fetcher */,
 				7D78635F19880C65001021CB /* Supporting Files */,
 			);
 			path = TopRegions;
@@ -153,6 +162,25 @@
 				7D78638319880C65001021CB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D78639019880E8E001021CB /* Flickr Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				7D78639119880E8E001021CB /* FlickrAPIKey.h */,
+				7D78639219880E8E001021CB /* FlickrFetcher.h */,
+				7D78639319880E8E001021CB /* FlickrFetcher.m */,
+			);
+			path = "Flickr Fetcher";
+			sourceTree = "<group>";
+		};
+		7D78639519880E97001021CB /* CoreDataTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D78639619880E97001021CB /* CoreDataTableViewController.h */,
+				7D78639719880E97001021CB /* CoreDataTableViewController.m */,
+			);
+			path = CoreDataTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +283,9 @@
 			files = (
 				7D78637219880C65001021CB /* ViewController.m in Sources */,
 				7D78636919880C65001021CB /* AppDelegate.m in Sources */,
+				7D78639419880E8E001021CB /* FlickrFetcher.m in Sources */,
 				7D78636519880C65001021CB /* main.m in Sources */,
+				7D78639819880E97001021CB /* CoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
