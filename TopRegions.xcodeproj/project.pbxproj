@@ -33,7 +33,7 @@
 		7D89610119893250008207B7 /* Photographer+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610019893250008207B7 /* Photographer+Create.m */; };
 		7D89610C19894F2E008207B7 /* TopFlickrRegionsCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610319894F2E008207B7 /* TopFlickrRegionsCDTVC.m */; };
 		7D89610D19894F2E008207B7 /* FlickrRegionPhotosCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610519894F2E008207B7 /* FlickrRegionPhotosCDTVC.m */; };
-		7D89610E19894F2E008207B7 /* FlickrPhotoTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610719894F2E008207B7 /* FlickrPhotoTVC.m */; };
+		7D89610E19894F2E008207B7 /* FlickrPhotoCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610719894F2E008207B7 /* FlickrPhotoCDTVC.m */; };
 		7D89610F19894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610919894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.m */; };
 		7D89611019894F2E008207B7 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610B19894F2E008207B7 /* ImageViewController.m */; };
 /* End PBXBuildFile section */
@@ -91,8 +91,8 @@
 		7D89610319894F2E008207B7 /* TopFlickrRegionsCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopFlickrRegionsCDTVC.m; sourceTree = "<group>"; };
 		7D89610419894F2E008207B7 /* FlickrRegionPhotosCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrRegionPhotosCDTVC.h; sourceTree = "<group>"; };
 		7D89610519894F2E008207B7 /* FlickrRegionPhotosCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrRegionPhotosCDTVC.m; sourceTree = "<group>"; };
-		7D89610619894F2E008207B7 /* FlickrPhotoTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoTVC.h; sourceTree = "<group>"; };
-		7D89610719894F2E008207B7 /* FlickrPhotoTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoTVC.m; sourceTree = "<group>"; };
+		7D89610619894F2E008207B7 /* FlickrPhotoCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoCDTVC.h; sourceTree = "<group>"; };
+		7D89610719894F2E008207B7 /* FlickrPhotoCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoCDTVC.m; sourceTree = "<group>"; };
 		7D89610819894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentlyViewedFlickrPhotosTVC.h; sourceTree = "<group>"; };
 		7D89610919894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentlyViewedFlickrPhotosTVC.m; sourceTree = "<group>"; };
 		7D89610A19894F2E008207B7 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
@@ -179,8 +179,8 @@
 				7D89610319894F2E008207B7 /* TopFlickrRegionsCDTVC.m */,
 				7D89610419894F2E008207B7 /* FlickrRegionPhotosCDTVC.h */,
 				7D89610519894F2E008207B7 /* FlickrRegionPhotosCDTVC.m */,
-				7D89610619894F2E008207B7 /* FlickrPhotoTVC.h */,
-				7D89610719894F2E008207B7 /* FlickrPhotoTVC.m */,
+				7D89610619894F2E008207B7 /* FlickrPhotoCDTVC.h */,
+				7D89610719894F2E008207B7 /* FlickrPhotoCDTVC.m */,
 				7D89610819894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.h */,
 				7D89610919894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.m */,
 				7D89610A19894F2E008207B7 /* ImageViewController.h */,
@@ -345,7 +345,7 @@
 				7D7863B019881C99001021CB /* Photo+Flickr.m in Sources */,
 				7D7863AA19881BD2001021CB /* Photo.m in Sources */,
 				7D7863A719881BD2001021CB /* Photographer.m in Sources */,
-				7D89610E19894F2E008207B7 /* FlickrPhotoTVC.m in Sources */,
+				7D89610E19894F2E008207B7 /* FlickrPhotoCDTVC.m in Sources */,
 				7D89610119893250008207B7 /* Photographer+Create.m in Sources */,
 				7D89610C19894F2E008207B7 /* TopFlickrRegionsCDTVC.m in Sources */,
 				7D89610F19894F2E008207B7 /* RecentlyViewedFlickrPhotosTVC.m in Sources */,

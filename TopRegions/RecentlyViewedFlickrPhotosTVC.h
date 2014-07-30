@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Darkking. All rights reserved.
 //
 
-#import "FlickrPhotoTVC.h"
+#import "FlickrPhotoCDTVC.h"
 
-@interface RecentlyViewedFlickrPhotosTVC : FlickrPhotoTVC
+@interface RecentlyViewedFlickrPhotosTVC : FlickrPhotoCDTVC
 
 @end

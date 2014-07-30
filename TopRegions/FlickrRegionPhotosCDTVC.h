@@ -7,11 +7,12 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "FlickrPhotoCDTVC.h"
 #import "Region.h"
 
 // Class displays tableview of top Flickr photos from a
 // specific region
-@interface FlickrRegionPhotosCDTVC : CoreDataTableViewController
+@interface FlickrRegionPhotosCDTVC : FlickrPhotoCDTVC
 
 // Region of photos in the database
 @property (nonatomic, strong) Region *region;

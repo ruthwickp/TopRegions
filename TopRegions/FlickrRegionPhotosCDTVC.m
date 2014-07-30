@@ -7,8 +7,6 @@
 //
 
 #import "FlickrRegionPhotosCDTVC.h"
-#import "ImageViewController.h"
-#import "Photo.h"
 
 @interface FlickrRegionPhotosCDTVC ()
 
@@ -30,35 +28,6 @@
                                                                         managedObjectContext:[region managedObjectContext]
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
-}
-
-
-// Displays photo from region into cell using NSFetchedResultsController
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RegionPhoto" forIndexPath:indexPath];
-    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = photo.title;
-    cell.detailTextLabel.text = photo.subtitle;
-    return cell;
-}
-
-// Displays photo object when user selects row
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([sender isKindOfClass:[UITableViewCell class]]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        if (indexPath) {
-            if ([segue.identifier isEqualToString:@"Display Photo"]) {
-                if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
-                    // Prepares the image view controller to display image
-                    ImageViewController *ivc = segue.destinationViewController;
-                    Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-                    ivc.imageURL = [NSURL URLWithString:photo.imageURL];
-                }
-            }
-        }
-    }
 }
 
 @end
