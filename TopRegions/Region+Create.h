@@ -10,4 +10,7 @@
 
 @interface Region (Create)
 
+// Adds region for given photo into the database
++ (Region *)addRegionForPhotoInfo:(NSDictionary *)photoDictionary
+         inNSManagedObjectContext:(NSManagedObjectContext *)context;
 @end

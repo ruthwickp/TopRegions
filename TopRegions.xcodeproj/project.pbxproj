@@ -30,6 +30,7 @@
 		7D7863AD19881BD2001021CB /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863AC19881BD2001021CB /* Region.m */; };
 		7D7863B019881C99001021CB /* Photo+Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863AF19881C99001021CB /* Photo+Flickr.m */; };
 		7D7863B319882907001021CB /* Region+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7863B219882907001021CB /* Region+Create.m */; };
+		7D89610119893250008207B7 /* Photographer+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610019893250008207B7 /* Photographer+Create.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		7D7863AF19881C99001021CB /* Photo+Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Flickr.m"; sourceTree = "<group>"; };
 		7D7863B119882907001021CB /* Region+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Region+Create.h"; sourceTree = "<group>"; };
 		7D7863B219882907001021CB /* Region+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Region+Create.m"; sourceTree = "<group>"; };
+		7D8960FF19893250008207B7 /* Photographer+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photographer+Create.h"; sourceTree = "<group>"; };
+		7D89610019893250008207B7 /* Photographer+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photographer+Create.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,8 @@
 				7D7863AF19881C99001021CB /* Photo+Flickr.m */,
 				7D7863B119882907001021CB /* Region+Create.h */,
 				7D7863B219882907001021CB /* Region+Create.m */,
+				7D8960FF19893250008207B7 /* Photographer+Create.h */,
+				7D89610019893250008207B7 /* Photographer+Create.m */,
 				7D7863AB19881BD2001021CB /* Region.h */,
 				7D7863AC19881BD2001021CB /* Region.m */,
 				7D7863A819881BD2001021CB /* Photo.h */,
@@ -315,6 +320,7 @@
 				7D7863B019881C99001021CB /* Photo+Flickr.m in Sources */,
 				7D7863AA19881BD2001021CB /* Photo.m in Sources */,
 				7D7863A719881BD2001021CB /* Photographer.m in Sources */,
+				7D89610119893250008207B7 /* Photographer+Create.m in Sources */,
 				7D78636519880C65001021CB /* main.m in Sources */,
 				7D7863AD19881BD2001021CB /* Region.m in Sources */,
 				7D78639819880E97001021CB /* CoreDataTableViewController.m in Sources */,
@@ -534,6 +540,7 @@
 				7D78638C19880C65001021CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D78638D19880C65001021CB /* Build configuration list for PBXNativeTarget "TopRegionsTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +549,7 @@
 				7D78638F19880C65001021CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

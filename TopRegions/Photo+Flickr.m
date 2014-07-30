@@ -8,7 +8,7 @@
 
 #import "Photo+Flickr.h"
 #import "FlickrFetcher.h"
-#import "Region"
+#import "Region+Create.h"
 
 @implementation Photo (Flickr)
 
@@ -48,7 +48,7 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
         dispatch_queue_t thumbnailQ = dispatch_queue_create("thumbnailQ", NULL);
         dispatch_async(thumbnailQ, ^{
             NSData *jsonData = [NSData dataWithContentsOfURL:thumbnailURL];
-            photo.thumbnail = [NSJSONSerialization dataWithJSONObject:jsonData
+            photo.thumbnail = [NSJSONSerialization JSONObjectWithData:jsonData
                                                               options:0
                                                                 error:NULL];
             NSLog(@"%@", photo.thumbnail);
