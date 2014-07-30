@@ -39,7 +39,7 @@
     NSArray *matches = [context executeFetchRequest:request error:&error];
     if (!matches || error || [matches count] > 1) {
         // Error in finding photo
-        NSLog(@"Error occurred when adding photo");
+        NSLog(@"Error occurred when adding region");
     }
     else if ([matches count]) {
         // Gets matched region
