@@ -29,7 +29,9 @@
         NSString *regionName = [FlickrFetcher extractRegionNameFromPlaceInformation:photoPlaceDictionary];
         
         // Adds region in database for given photo
-        [self createRegionWithName:regionName withPhotoInfo:photoDictionary fromPhoto:photo withContext:context];
+        [context performBlock:^{
+            [self createRegionWithName:regionName withPhotoInfo:photoDictionary fromPhoto:photo withContext:context];
+        }];
     });
 }
 
@@ -60,16 +62,20 @@
         // Adds region in database
         region = [NSEntityDescription insertNewObjectForEntityForName:@"Region" inManagedObjectContext:context];
         region.name = regionName;
+        region.photographerCount = 0;
     }
     
     // Sets the region property of the photo
     photo.fromRegion = region;
     
-    // Creates photographer for photo in region
+    // Creates photographer for photo in region and updates count
     if (region) {
-        [Photographer createPhotographerWithPhotoInfo:photoDictionary
-                                           fromRegion:region
-                             inNSManagedContextObject:context];
+        [context performBlock:^{
+            [Photographer createPhotographerWithPhotoInfo:photoDictionary
+                                               fromRegion:region
+                                 inNSManagedContextObject:context];
+            region.photographerCount = [NSNumber numberWithUnsignedInteger:[region.photographers count]];
+        }];
     }
 }
 

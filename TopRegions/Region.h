@@ -2,7 +2,7 @@
 //  Region.h
 //  TopRegions
 //
-//  Created by Ruthwick Pathireddy on 7/29/14.
+//  Created by Ruthwick Pathireddy on 8/3/14.
 //  Copyright (c) 2014 Darkking. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 @interface Region : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * photographerCount;
 @property (nonatomic, retain) NSSet *photographers;
 @property (nonatomic, retain) NSSet *photos;
 @end

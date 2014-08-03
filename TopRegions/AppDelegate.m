@@ -11,18 +11,21 @@
 #import "Photo+Flickr.h"
 #import "DatabaseAvailability.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <NSURLSessionDownloadDelegate>
 @property (strong, nonatomic) UIManagedDocument *document;
 @property (strong, nonatomic) NSManagedObjectContext *context;
+@property (strong, nonatomic) NSURLSession *flickrDownloadingSession;
 @end
 
 @implementation AppDelegate
 
-// Creates managed document when accessed for the first time
+#define FLICKR_FETCH @"FLICKR_FETCH"
+
+// Lazy instantiation
 - (UIManagedDocument *)document
 {
     if (!_document) {
-        // Finds the url for document
+        // Creates the url for document
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:(NSUserDomainMask)] firstObject];
         NSString *documentName = @"FlickrPhotoDatabase";
@@ -34,13 +37,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Checks to see if document can be created
-    [self createUIManagedDocument];
+    // Tries to create a ManagedObjectContext
+    [self createUIManagedObjectContext];
     return YES;
 }
 
 // Tries to create or open UIManagedDocument
-- (void)createUIManagedDocument
+- (void)createUIManagedObjectContext
 {
     // Check if file already exists
     if ([[NSFileManager defaultManager] fileExistsAtPath:[[self.document fileURL] path]]) {
@@ -79,7 +82,7 @@
     }
 }
 
-// Posts a notification when the database is set
+// Posts a notification when the context is set
 - (void)setContext:(NSManagedObjectContext *)context
 {
     _context = context;
@@ -92,27 +95,53 @@
 // Fetches flickr photos
 - (void)fetchFlickrPhotos
 {
-    dispatch_queue_t fetchQ = dispatch_queue_create("fetchQ", NULL);
-    dispatch_async(fetchQ, ^{
-        NSURL *flickrPhotosURL = [FlickrFetcher URLforRecentGeoreferencedPhotos];
-        NSData *jsonFlickrResults = [NSData dataWithContentsOfURL:flickrPhotosURL];
+    NSURLSessionDownloadTask *task = [self.flickrDownloadingSession downloadTaskWithURL:[FlickrFetcher URLforRecentGeoreferencedPhotos]];
+    task.taskDescription = FLICKR_FETCH;
+    [task resume];
+}
+
+// Lazily instantiates the flickr downloading session
+- (NSURLSession *)flickrDownloadingSession
+{
+    if (!_flickrDownloadingSession) {
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfiguration:FLICKR_FETCH];
+        _flickrDownloadingSession = [NSURLSession sessionWithConfiguration:configuration
+                                                                  delegate:self
+                                                             delegateQueue:nil];
+    }
+    return _flickrDownloadingSession;
+}
+
+// Add photos to database after downloading url
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask
+didFinishDownloadingToURL:(NSURL *)location
+{
+    if ([downloadTask.taskDescription isEqualToString:FLICKR_FETCH]) {
+        NSData *jsonFlickrResults = [NSData dataWithContentsOfURL:location];
         NSDictionary *flickrPropertyResults = [NSJSONSerialization JSONObjectWithData:jsonFlickrResults
                                                                               options:0
                                                                                 error:NULL];
         NSArray *photos = [flickrPropertyResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
-        [Photo addPhotosFromArray:photos inNSManagedObjectContext:self.context];
-    });
+        [self.context performBlock:^{
+            [Photo addPhotosFromArray:photos inNSManagedObjectContext:self.context];
+        }];
+    }
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
+// Required by protocol
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask
+ didResumeAtOffset:(int64_t)fileOffset
+expectedTotalBytes:(int64_t)expectedTotalBytes
+{}
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
+// Required by protocol
+- (void)URLSession:(NSURLSession *)session
+      downloadTask:(NSURLSessionDownloadTask *)downloadTask
+      didWriteData:(int64_t)bytesWritten
+ totalBytesWritten:(int64_t)totalBytesWritten
+totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+{}
 
 @end

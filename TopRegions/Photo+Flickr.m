@@ -54,9 +54,10 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
         });
         
         // Add region for photo
-        [Region addRegionForPhotoInfo:photoDictionary withPhoto:photo inNSManagedObjectContext:context];
+        [context performBlock:^{
+            [Region addRegionForPhotoInfo:photoDictionary withPhoto:photo inNSManagedObjectContext:context];
+        }];
     }
-    NSLog(@"%@", photo);
     
     return photo;
 }
@@ -68,7 +69,6 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
     for (NSDictionary *photo in photos) {
         [Photo addPhotoInfo:photo inNSManagedObjectContext:context];
     }
-    NSLog(@"completed adding photos from array");
 }
 
 
