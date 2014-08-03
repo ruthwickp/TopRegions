@@ -33,16 +33,15 @@
     
     // Create a request for regions in order of photographer count
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Region"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-//    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photographers"
-//                                                              ascending:YES
-//                                                             comparator:^NSComparisonResult(id obj1, id obj2) {
-//                                                                 return [obj1 count] - [obj2 count];
-//                                                                 
-//                                                             }],
-//                                [NSSortDescriptor sortDescriptorWithKey:@"name"
-//                                                              ascending:YES
-//                                                               selector:@selector(localizedStandardCompare:)]];
+//    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photographers"
+                                                              ascending:YES
+                                                             comparator:^NSComparisonResult(id obj1, id obj2) {
+                                                                 return [obj1 count] - [obj2 count];
+                                                             }],
+                                [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                              ascending:YES
+                                                               selector:@selector(localizedStandardCompare:)]];
     request.predicate = nil;
     request.fetchLimit = POPULAR_REGION_COUNT;
     

@@ -7,10 +7,13 @@
 //
 
 #import "Region.h"
+#import "Photo.h"
 
 @interface Region (Create)
 
 // Adds region for given photo into the database
-+ (Region *)addRegionForPhotoInfo:(NSDictionary *)photoDictionary
++ (void)addRegionForPhotoInfo:(NSDictionary *)photoDictionary
+                        withPhoto:(Photo *)photo
          inNSManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

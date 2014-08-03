@@ -9,16 +9,16 @@
 #import "Region+Create.h"
 #import "Photographer+Create.h"
 #import "FlickrFetcher.h"
+#import "Photo.h"
 
 @implementation Region (Create)
 
-// Adds region for given photo into the database
-+ (Region *)addRegionForPhotoInfo:(NSDictionary *)photoDictionary
-         inNSManagedObjectContext:(NSManagedObjectContext *)context
+// Adds a region to the database with the given photo
++ (void)addRegionForPhotoInfo:(NSDictionary *)photoDictionary
+                    withPhoto:(Photo *)photo
+     inNSManagedObjectContext:(NSManagedObjectContext *)context
 {
-    Region *region = nil;
-    
-    // Gets region name and creates region in database
+    // Gets region name
     NSURL *photoInformationURL = [FlickrFetcher URLforInformationAboutPlace:[photoDictionary valueForKeyPath:FLICKR_PLACE_ID]];
     dispatch_queue_t regionQ = dispatch_queue_create("RegionQ", NULL);
     dispatch_async(regionQ, ^{
@@ -27,13 +27,17 @@
                                                                              options:0
                                                                                error:NULL];
         NSString *regionName = [FlickrFetcher extractRegionNameFromPlaceInformation:photoPlaceDictionary];
-        Region *region = [self createRegionWithName:regionName withContext:context];
+        
+        // Adds region in database for given photo
+        [self createRegionWithName:regionName withPhotoInfo:photoDictionary fromPhoto:photo withContext:context];
     });
-    
-    return region;
 }
 
-+ (Region *)createRegionWithName:(NSString *)regionName withContext:(NSManagedObjectContext *)context
+// Helper method to add region to database
++ (void)createRegionWithName:(NSString *)regionName
+                       withPhotoInfo:(NSDictionary *)photoDictionary
+                       fromPhoto:(Photo *)photo
+                     withContext:(NSManagedObjectContext *)context
 {
     Region *region = nil;
     
@@ -58,16 +62,15 @@
         region.name = regionName;
     }
     
+    // Sets the region property of the photo
+    photo.fromRegion = region;
+    
     // Creates photographer for photo in region
     if (region) {
         [Photographer createPhotographerWithPhotoInfo:photoDictionary
                                            fromRegion:region
                              inNSManagedContextObject:context];
     }
-    
-    return region;
-
-    
 }
 
 
