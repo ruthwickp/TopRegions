@@ -1,5 +1,5 @@
 //
-//  RecentlyViewedFlickrPhotosTVC.h
+//  RecentlyViewedFlickrPhotosCDTVC.h
 //  TopPlaces
 //
 //  Created by Ruthwick Pathireddy on 7/24/14.
@@ -8,6 +8,6 @@
 
 #import "FlickrPhotoCDTVC.h"
 
-@interface RecentlyViewedFlickrPhotosTVC : FlickrPhotoCDTVC
+@interface RecentlyViewedFlickrPhotosCDTVC : FlickrPhotoCDTVC
 
 @end

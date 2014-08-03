@@ -9,10 +9,22 @@
 #import "TopFlickrRegionsCDTVC.h"
 #import "FlickrRegionPhotosCDTVC.h"
 #import "Region.h"
+#import "DatabaseAvailability.h"
 
 @implementation TopFlickrRegionsCDTVC
 
 #define POPULAR_REGION_COUNT 50
+
+// Makes the controller listen for changes in the database
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:DatabaseAvailabilityNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note) {
+                                                      self.context = note.userInfo[DatabaseAvailabilityContext];
+                                                  }];
+}
 
 // When context gets set, we create a fetched NSFetchedResultsController
 - (void)setContext:(NSManagedObjectContext *)context
@@ -21,15 +33,16 @@
     
     // Create a request for regions in order of photographer count
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Region"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photographers"
-                                                              ascending:YES
-                                                             comparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                 return [obj1 count] - [obj2 count];
-                                                                 
-                                                             }],
-                                [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                              ascending:YES
-                                                               selector:@selector(localizedStandardCompare:)]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+//    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"photographers"
+//                                                              ascending:YES
+//                                                             comparator:^NSComparisonResult(id obj1, id obj2) {
+//                                                                 return [obj1 count] - [obj2 count];
+//                                                                 
+//                                                             }],
+//                                [NSSortDescriptor sortDescriptorWithKey:@"name"
+//                                                              ascending:YES
+//                                                               selector:@selector(localizedStandardCompare:)]];
     request.predicate = nil;
     request.fetchLimit = POPULAR_REGION_COUNT;
     

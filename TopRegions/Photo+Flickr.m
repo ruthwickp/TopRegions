@@ -18,6 +18,7 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
 {
     Photo *photo = nil;
     
+    
     // Makes a request to the database for the photo
     NSString *unique = [photoDictionary valueForKey:FLICKR_PHOTO_ID];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
@@ -43,16 +44,17 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
         NSString *imageURL = [[FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
         photo.imageURL = imageURL;
         
-        // Gets the thumbnail on a different thread
-        NSURL *thumbnailURL = [FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatSquare];
-        dispatch_queue_t thumbnailQ = dispatch_queue_create("thumbnailQ", NULL);
-        dispatch_async(thumbnailQ, ^{
-            NSData *jsonData = [NSData dataWithContentsOfURL:thumbnailURL];
-            photo.thumbnail = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                              options:0
-                                                                error:NULL];
-            NSLog(@"%@", photo.thumbnail);
-        });
+        
+        photo.thumbnail = nil;
+//        // Gets the thumbnail on a different thread
+//        NSURL *thumbnailURL = [FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatSquare];
+//        dispatch_queue_t thumbnailQ = dispatch_queue_create("thumbnailQ", NULL);
+//        dispatch_async(thumbnailQ, ^{
+//            NSData *jsonData = [NSData dataWithContentsOfURL:thumbnailURL];
+//            photo.thumbnail = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                              options:0
+//                                                                error:NULL];
+//        });
         
         // Add region for photo
         Region *region = [Region addRegionForPhotoInfo:photoDictionary inNSManagedObjectContext:context];

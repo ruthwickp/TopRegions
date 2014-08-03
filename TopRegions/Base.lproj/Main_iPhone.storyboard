@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="-98" y="-273"/>
         </scene>
-        <!--Top Flickr RegionsCDTVC - Top Places-->
+        <!--Top Flickr RegionsCDTVC - Top Regions-->
         <scene sceneID="Xgj-JL-hIK">
             <objects>
                 <tableViewController id="bsx-NH-Sng" customClass="TopFlickrRegionsCDTVC" sceneMemberID="viewController">
@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Location Cell" textLabel="Ylx-i6-M8g" detailTextLabel="aso-bh-b5p" style="IBUITableViewCellStyleSubtitle" id="WeR-sC-6lX">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Region Cell" textLabel="Ylx-i6-M8g" detailTextLabel="aso-bh-b5p" style="IBUITableViewCellStyleSubtitle" id="WeR-sC-6lX">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WeR-sC-6lX" id="aCe-NL-Zjq">
@@ -65,13 +65,7 @@
                             <outlet property="delegate" destination="bsx-NH-Sng" id="Mbp-xK-70f"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Top Places" id="fDr-V0-5PO"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Qat-Xp-tIv">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="updateLocationSpots" destination="bsx-NH-Sng" eventType="valueChanged" id="eeg-O4-d2d"/>
-                        </connections>
-                    </refreshControl>
+                    <navigationItem key="navigationItem" title="Top Regions" id="fDr-V0-5PO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNa-li-6x5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="1864" y="-474"/>
         </scene>
-        <!--Recently Viewed Flickr PhotosTVC - Recently Viewed Photos-->
+        <!--Recently Viewed Flickr PhotosCDTVC - Recently Viewed Photos-->
         <scene sceneID="JeN-GJ-gsL">
             <objects>
-                <tableViewController id="xSg-s1-B0v" customClass="RecentlyViewedFlickrPhotosTVC" sceneMemberID="viewController">
+                <tableViewController id="xSg-s1-B0v" customClass="RecentlyViewedFlickrPhotosCDTVC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FW4-Xt-JZk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,11 +215,11 @@
             </objects>
             <point key="canvasLocation" x="1188" y="244"/>
         </scene>
-        <!--Navigation Controller - Top Places-->
+        <!--Navigation Controller - Top Regions-->
         <scene sceneID="7cg-Lo-tGn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X2S-cx-xt9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Places" id="iSI-Ff-zVy"/>
+                    <tabBarItem key="tabBarItem" title="Top Regions" id="iSI-Ff-zVy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SXp-Qi-lMp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

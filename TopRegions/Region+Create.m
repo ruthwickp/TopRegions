@@ -18,17 +18,24 @@
 {
     Region *region = nil;
     
-    // Gets region name
+    // Gets region name and creates region in database
     NSURL *photoInformationURL = [FlickrFetcher URLforInformationAboutPlace:[photoDictionary valueForKeyPath:FLICKR_PLACE_ID]];
-    __block NSString *regionName = nil;
-    dispatch_queue_t regionQ = dispatch_queue_create("Region@", NULL);
+    dispatch_queue_t regionQ = dispatch_queue_create("RegionQ", NULL);
     dispatch_async(regionQ, ^{
         NSData *jsonData = [NSData dataWithContentsOfURL:photoInformationURL];
         NSDictionary *photoPlaceDictionary = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                              options:0
                                                                                error:NULL];
-        regionName = [FlickrFetcher extractRegionNameFromPlaceInformation:photoPlaceDictionary];
+        NSString *regionName = [FlickrFetcher extractRegionNameFromPlaceInformation:photoPlaceDictionary];
+        Region *region = [self createRegionWithName:regionName withContext:context];
     });
+    
+    return region;
+}
+
++ (Region *)createRegionWithName:(NSString *)regionName withContext:(NSManagedObjectContext *)context
+{
+    Region *region = nil;
     
     // Makes a request to the database for the region
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Region"];
@@ -53,12 +60,14 @@
     
     // Creates photographer for photo in region
     if (region) {
-    [Photographer createPhotographerWithPhotoInfo:photoDictionary
-                                       fromRegion:region
-                         inNSManagedContextObject:context];
+        [Photographer createPhotographerWithPhotoInfo:photoDictionary
+                                           fromRegion:region
+                             inNSManagedContextObject:context];
     }
     
     return region;
+
+    
 }
 
 
