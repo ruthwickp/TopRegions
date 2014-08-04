@@ -59,6 +59,7 @@
 {
     ivc.imageURL = [NSURL URLWithString:photo.imageURL];
     ivc.title = photo.title;
+    photo.viewDate = [[NSDate alloc] init];
 }
 
 

@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSData * thumbnail;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * unique;
+@property (nonatomic, retain) NSDate * viewDate;
 @property (nonatomic, retain) Region *fromRegion;
 
 @end

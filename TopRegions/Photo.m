@@ -17,6 +17,7 @@
 @dynamic thumbnail;
 @dynamic title;
 @dynamic unique;
+@dynamic viewDate;
 @dynamic fromRegion;
 
 @end

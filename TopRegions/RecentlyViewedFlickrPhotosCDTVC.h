@@ -10,4 +10,6 @@
 
 @interface RecentlyViewedFlickrPhotosCDTVC : FlickrPhotoCDTVC
 
+@property (nonatomic, strong) NSManagedObjectContext *context;
+
 @end

@@ -6,6 +6,7 @@
         <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viewDate" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="fromRegion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="photos" inverseEntity="Region" syncable="YES"/>
     </entity>
     <entity name="Photographer" representedClassName="Photographer" syncable="YES">
@@ -19,7 +20,7 @@
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="fromRegion" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Photo" positionX="-443" positionY="296" width="128" height="133"/>
+        <element name="Photo" positionX="-443" positionY="296" width="128" height="148"/>
         <element name="Photographer" positionX="-441" positionY="117" width="128" height="73"/>
         <element name="Region" positionX="-666" positionY="189" width="128" height="103"/>
     </elements>

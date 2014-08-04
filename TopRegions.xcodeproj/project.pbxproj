@@ -34,7 +34,7 @@
 		7D89611019894F2E008207B7 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D89610B19894F2E008207B7 /* ImageViewController.m */; };
 		7DBD28FE1990172300904A35 /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD28FD1990172300904A35 /* Photographer.m */; };
 		7DBD29011990172400904A35 /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD29001990172400904A35 /* Region.m */; };
-		7DBD29041990172400904A35 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD29031990172400904A35 /* Photo.m */; };
+		7DBD29071990380C00904A35 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD29061990380C00904A35 /* Photo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +94,8 @@
 		7DBD28FD1990172300904A35 /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
 		7DBD28FF1990172400904A35 /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Region.h; sourceTree = "<group>"; };
 		7DBD29001990172400904A35 /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Region.m; sourceTree = "<group>"; };
-		7DBD29021990172400904A35 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		7DBD29031990172400904A35 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		7DBD29051990380C00904A35 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		7DBD29061990380C00904A35 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				7D78639919880F58001021CB /* TopRegions.xcdatamodeld */,
-				7DBD29021990172400904A35 /* Photo.h */,
-				7DBD29031990172400904A35 /* Photo.m */,
+				7DBD29051990380C00904A35 /* Photo.h */,
+				7DBD29061990380C00904A35 /* Photo.m */,
 				7DBD28FF1990172400904A35 /* Region.h */,
 				7DBD29001990172400904A35 /* Region.m */,
 				7DBD28FC1990172300904A35 /* Photographer.h */,
@@ -346,7 +346,7 @@
 				7D89610119893250008207B7 /* Photographer+Create.m in Sources */,
 				7D89610C19894F2E008207B7 /* TopFlickrRegionsCDTVC.m in Sources */,
 				7DBD28FE1990172300904A35 /* Photographer.m in Sources */,
-				7DBD29041990172400904A35 /* Photo.m in Sources */,
+				7DBD29071990380C00904A35 /* Photo.m in Sources */,
 				7D89610F19894F2E008207B7 /* RecentlyViewedFlickrPhotosCDTVC.m in Sources */,
 				7D89611019894F2E008207B7 /* ImageViewController.m in Sources */,
 				7D89610D19894F2E008207B7 /* FlickrRegionPhotosCDTVC.m in Sources */,
