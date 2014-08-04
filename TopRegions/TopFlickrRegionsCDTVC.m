@@ -75,7 +75,9 @@
                 if ([segue.destinationViewController isKindOfClass:[FlickrRegionPhotosCDTVC class]]) {
                     // Sets up destination view controller
                     FlickrRegionPhotosCDTVC *regionPhotosCDTVC = segue.destinationViewController;
-                    regionPhotosCDTVC.region = [self.fetchedResultsController objectAtIndexPath:cellIndex];
+                    Region *region = [self.fetchedResultsController objectAtIndexPath:cellIndex];
+                    regionPhotosCDTVC.title = region.name;
+                    regionPhotosCDTVC.region = region;
                 }
             }
         }

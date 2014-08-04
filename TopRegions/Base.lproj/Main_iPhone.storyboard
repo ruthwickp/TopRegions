@@ -56,7 +56,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="R8a-Nf-sR2" kind="push" identifier="Display Location Photos" id="UWZ-PJ-ALy"/>
+                                    <segue destination="R8a-Nf-sR2" kind="push" identifier="Display Region Photos" id="UWZ-PJ-ALy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -114,12 +114,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dam-dN-YEo"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="9NQ-tj-L2T">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <connections>
-                            <action selector="updatePhotosInLocation" destination="R8a-Nf-sR2" eventType="valueChanged" id="TSE-BS-jRA"/>
-                        </connections>
-                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Osl-3l-eoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,15 +11,13 @@
 #import "Photo+Flickr.h"
 #import "DatabaseAvailability.h"
 
-@interface AppDelegate () <NSURLSessionDownloadDelegate>
+@interface AppDelegate ()
 @property (strong, nonatomic) UIManagedDocument *document;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSURLSession *flickrDownloadingSession;
 @end
 
 @implementation AppDelegate
-
-#define FLICKR_FETCH @"FLICKR_FETCH"
 
 // Lazy instantiation
 - (UIManagedDocument *)document
@@ -95,8 +93,19 @@
 // Fetches flickr photos
 - (void)fetchFlickrPhotos
 {
-    NSURLSessionDownloadTask *task = [self.flickrDownloadingSession downloadTaskWithURL:[FlickrFetcher URLforRecentGeoreferencedPhotos]];
-    task.taskDescription = FLICKR_FETCH;
+    NSURLSessionDownloadTask *task = [self.flickrDownloadingSession downloadTaskWithURL:[FlickrFetcher URLforRecentGeoreferencedPhotos]
+      completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+          NSData *jsonFlickrResults = [NSData dataWithContentsOfURL:location];
+          NSDictionary *flickrPropertyResults = [NSJSONSerialization JSONObjectWithData:jsonFlickrResults
+                                                                                options:0
+                                                                                  error:NULL];
+          NSArray *photos = [flickrPropertyResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
+          // Adds photos to database
+          [self.context performBlock:^{
+              [Photo addPhotosFromArray:photos inNSManagedObjectContext:self.context];
+          }];
+
+    }];
     [task resume];
 }
 
@@ -104,44 +113,10 @@
 - (NSURLSession *)flickrDownloadingSession
 {
     if (!_flickrDownloadingSession) {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfiguration:FLICKR_FETCH];
-        _flickrDownloadingSession = [NSURLSession sessionWithConfiguration:configuration
-                                                                  delegate:self
-                                                             delegateQueue:nil];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        _flickrDownloadingSession = [NSURLSession sessionWithConfiguration:configuration];
     }
     return _flickrDownloadingSession;
 }
-
-// Add photos to database after downloading url
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-didFinishDownloadingToURL:(NSURL *)location
-{
-    if ([downloadTask.taskDescription isEqualToString:FLICKR_FETCH]) {
-        NSData *jsonFlickrResults = [NSData dataWithContentsOfURL:location];
-        NSDictionary *flickrPropertyResults = [NSJSONSerialization JSONObjectWithData:jsonFlickrResults
-                                                                              options:0
-                                                                                error:NULL];
-        NSArray *photos = [flickrPropertyResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
-        [self.context performBlock:^{
-            [Photo addPhotosFromArray:photos inNSManagedObjectContext:self.context];
-        }];
-    }
-}
-
-// Required by protocol
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
- didResumeAtOffset:(int64_t)fileOffset
-expectedTotalBytes:(int64_t)expectedTotalBytes
-{}
-
-// Required by protocol
-- (void)URLSession:(NSURLSession *)session
-      downloadTask:(NSURLSessionDownloadTask *)downloadTask
-      didWriteData:(int64_t)bytesWritten
- totalBytesWritten:(int64_t)totalBytesWritten
-totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
-{}
 
 @end

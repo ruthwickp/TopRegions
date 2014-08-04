@@ -21,8 +21,9 @@
     _region = region;
     
     // Making a request for the particular region
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Region"];
-    request.predicate = [NSPredicate predicateWithFormat:@"name = %@", region.name];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedStandardCompare:)]];
+    request.predicate = [NSPredicate predicateWithFormat:@"fromRegion = %@", self.region];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:[region managedObjectContext]

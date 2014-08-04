@@ -27,6 +27,7 @@
                                                                              options:0
                                                                                error:NULL];
         NSString *regionName = [FlickrFetcher extractRegionNameFromPlaceInformation:photoPlaceDictionary];
+        NSLog(@"%@", regionName);
         
         // Adds region in database for given photo
         [context performBlock:^{
