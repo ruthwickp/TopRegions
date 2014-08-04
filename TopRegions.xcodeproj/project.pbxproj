@@ -287,6 +287,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Darkking;
 				TargetAttributes = {
+					7D78635419880C65001021CB = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					7D78637819880C65001021CB = {
 						TestTargetID = 7D78635419880C65001021CB;
 					};

@@ -15,9 +15,12 @@
 @property (strong, nonatomic) UIManagedDocument *document;
 @property (strong, nonatomic) NSManagedObjectContext *context;
 @property (strong, nonatomic) NSURLSession *flickrDownloadingSession;
+@property (copy, nonatomic) void (^backgroundURLSessionCompletionHandler)();
 @end
 
 @implementation AppDelegate
+
+#define RELOAD_TIME 10*60
 
 // Lazy instantiation
 - (UIManagedDocument *)document
@@ -84,10 +87,24 @@
 - (void)setContext:(NSManagedObjectContext *)context
 {
     _context = context;
+    
+    // Loads data every 10 minutes while in foreground
+    [NSTimer scheduledTimerWithTimeInterval:RELOAD_TIME
+                                     target:self
+                                   selector:@selector(fetchFlickrPhotos:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
     NSDictionary *userInfo = self.context ? @{ DatabaseAvailabilityContext : self.context } : nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseAvailabilityNotification
                                                         object:self
                                                       userInfo:userInfo];
+}
+
+// Method for NSTimer selector
+- (void)fetchFlickrPhotos:(NSTimer *)timer
+{
+    [self fetchFlickrPhotos];
 }
 
 // Fetches flickr photos
