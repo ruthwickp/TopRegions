@@ -51,7 +51,7 @@
                 [self documentIsReady];
             }
             else {
-                NSLog(@"Error, document could not be created.");
+                NSLog(@"Error, document could not be opened.");
             }
         }];
     }

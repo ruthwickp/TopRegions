@@ -55,7 +55,7 @@
     
     // Configures cell for a region
     Region *region = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = region.name;
+    cell.textLabel.text = region.name ? region.name : @"Unknown";
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photographers", [region.photographers count]];
     
     return cell;

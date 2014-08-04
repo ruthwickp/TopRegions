@@ -2,7 +2,7 @@
 //  Photo.m
 //  TopRegions
 //
-//  Created by Ruthwick Pathireddy on 7/29/14.
+//  Created by Ruthwick Pathireddy on 8/4/14.
 //  Copyright (c) 2014 Darkking. All rights reserved.
 //
 
@@ -12,11 +12,11 @@
 
 @implementation Photo
 
-@dynamic title;
-@dynamic subtitle;
-@dynamic unique;
 @dynamic imageURL;
+@dynamic subtitle;
 @dynamic thumbnail;
+@dynamic title;
+@dynamic unique;
 @dynamic fromRegion;
 
 @end

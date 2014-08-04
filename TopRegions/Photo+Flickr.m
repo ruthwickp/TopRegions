@@ -43,21 +43,17 @@ inNSManagedObjectContext:(NSManagedObjectContext *)context
         NSString *imageURL = [[FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
         photo.imageURL = imageURL;
         
-        photo.thumbnail = nil;
-//        // Gets the thumbnail on a different thread
-//        NSURL *thumbnailURL = [FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatSquare];
-//        dispatch_queue_t thumbnailQ = dispatch_queue_create("thumbnailQ", NULL);
-//        dispatch_async(thumbnailQ, ^{
-//            NSData *jsonData = [NSData dataWithContentsOfURL:thumbnailURL];
-//            photo.thumbnail = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                              options:0
-//                                                                error:NULL];
-//        });
-        
-        // Add region for photo
-        [context performBlock:^{
-            [Region addRegionForPhotoInfo:photoDictionary withPhoto:photo inNSManagedObjectContext:context];
-        }];
+        // Gets the thumbnail on a different thread
+        NSURL *thumbnailURL = [FlickrFetcher URLforPhoto:photoDictionary format:FlickrPhotoFormatSquare];
+        dispatch_queue_t thumbnailQ = dispatch_queue_create("thumbnailQ", NULL);
+        dispatch_async(thumbnailQ, ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:thumbnailURL];
+            photo.thumbnail = imageData;
+            // Add region for photo
+            [context performBlock:^{
+                [Region addRegionForPhotoInfo:photoDictionary withPhoto:photo inNSManagedObjectContext:context];
+            }];
+        });
     }
     
     return photo;

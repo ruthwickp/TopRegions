@@ -31,6 +31,7 @@
     // Configures cell
     cell.textLabel.text = title;
     cell.detailTextLabel.text = description;
+    cell.imageView.image = [UIImage imageWithData:photo.thumbnail];
     return cell;
 }
 
@@ -53,26 +54,11 @@
     }
 }
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Displays row at index on detail view controller on ipad
-    UIViewController *vc = self.splitViewController.viewControllers[1];
-    if ([vc isKindOfClass:[UINavigationController class]]) {
-        vc = ((UINavigationController *)vc).viewControllers[0];
-    }
-    if ([vc isKindOfClass:[ImageViewController class]]) {
-        [self prepareImageViewController:(ImageViewController *)vc
-                          toDisplayPhoto:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-    }
-}
-
 // Helper method to display and set info for image view controller
 - (void)prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(Photo *)photo
 {
     ivc.imageURL = [NSURL URLWithString:photo.imageURL];
+    ivc.title = photo.title;
 }
 
 
